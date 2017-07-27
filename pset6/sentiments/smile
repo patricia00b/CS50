@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+
+from analyzer import Analyzer #method to implement
+from termcolor import colored #gives the color for the smile faces
+
+def main():
+
+    # ensure proper usage
+    if len(sys.argv) != 2:
+        sys.exit("Usage: ./smile word")
+
+    # absolute paths to lists
+    positives = os.path.join(sys.path[0], "positive-words.txt")
+    negatives = os.path.join(sys.path[0], "negative-words.txt")
+
+    # instantiate analyzer object
+    analyzer = Analyzer(positives, negatives)
+
+    # analyze word and gets score
+    score = analyzer.analyze(sys.argv[1]) #pass to object method the word user provided 
+    if score > 0.0: #returns colored smile accordingly
+        print(colored(":)", "green"))
+    elif score < 0.0:
+        print(colored(":(", "red"))
+    else:
+        print(colored(":|", "yellow"))
+
+if __name__ == "__main__": #calls main function
+    main()

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+<fielset>
+    <div>
+        <h1>{{symbol}}</h1>
+        <p align="left">Name: {{name}}</p>
+        <p align="left">Price: ${{price}}</p>
+    </div>
+</fielset>    
+{% endblock %}
